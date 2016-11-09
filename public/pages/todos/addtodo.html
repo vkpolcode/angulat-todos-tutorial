@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h3 class="modal-title" ng-show="todo._id == null">New Todo</h3>
+    <h3 class="modal-title" ng-hide="todo._id == null">Edit Todo</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form ng-submit="saveTodo()" name="addTodoForm" class="my-form form-group" novalidate>
+        <div class="form-group">
+            <input type="text" name="name" ng-model="todo.name" class="form-control" placeholder="Todo Name..." required/>
+            <div ng-show="addTodoForm.$submitted || addTodoForm.email.$touched">
+                <p ng-show="addTodoForm.name.$error.required">Field name is required.</p>
+            </div>
+        </div>
+        <div class="form-group text-right">
+            <button class="btn btn-warning" type="button" ng-click="closeThisDialog()">Cancel</button>
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+    </form>
+</div>

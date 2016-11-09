@@ -1,0 +1,26 @@
+<div class="row jumbotron text-center" >
+    <h1>Registration Page</h1>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form ng-submit="register()" name="registerForm" class="my-form form-group" novalidate>
+            <div class="form-group">
+                <input type="email" name="email" value="{{user.email}}" ng-model="user.email" class="form-control" placeholder="E-mail" required/>
+                <div ng-show="registerForm.$submitted || registerForm.email.$touched">
+                    <p ng-show="registerForm.email.$error.required">Field E-mail is required.</p>
+                    <p ng-show="registerForm.email.$error.email">E-mail value is not correct.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" ng-model="user.password" class="form-control" placeholder="Password" required/>
+                <div ng-show="registerForm.$submitted || registerForm.password.$touched">
+                    <p ng-show="registerForm.password.$error.required">Field password is required.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="button" ng-click="reset(registerForm)">Reset</button>
+                <button class="btn btn-success" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>

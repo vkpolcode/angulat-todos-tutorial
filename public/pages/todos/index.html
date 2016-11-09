@@ -1,0 +1,49 @@
+<div class="jumbotron">
+    <h1 class="text-center">Todos Page</h1>
+    <div>
+        <h3 class="float-left">Todo's Lists</h3>
+        <button type="button" class="btn btn-primary float-right" ng-click="createList()">Create List</button>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="panel-group lists-group" id="lists" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" ng-repeat="list in lists">
+            <div class="panel-heading" role="tab" id="heading-{{list._id}}">
+                <h4 class="panel-title">
+                    <a ng-class="{collapsed: isOpened(list._id)}" ng-click="openList(list._id)" class="list-header" role="button" data-toggle="collapse" data-parent="#lists" data-target="#collapse-{{list._id}}" aria-expanded="false" aria-controls="collapse-{{list._id}}">
+                        {{ list.name }}
+                    </a>
+                    <div class="float-right">
+                        <button class="btn btn-success" ng-click="editList(list._id)">Edit</button>
+                        <button class="btn btn-danger" ng-click="removeList(list._id)">Remove</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </h4>
+            </div>
+            <div id="collapse-{{list._id}}" class="panel-collapse collapse" ng-class="{in: isOpened(list._id)}" role="tabpanel" aria-labelledby="heading-{{list._id}}">
+                <div class="panel-body">
+                    <div class="margin-bottom-10">
+                        <h4 class="float-left font-weight-bold">Todos</h4>
+                        <button class="btn btn-primary float-right" ng-click="addTodo(list._id)">Add Todo</button>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div ng-show="!todos[list._id].length" class="empty-todos-list">There are no Todos for show</div>
+                    <div class="margin-bottom-10 padding-bottom-10 border-bottom-ddd" ng-repeat="todo in todos[list._id]">
+                        <div class="float-left line-height-34" ng-class="{'completed-todo': todo.completed}">
+                            {{todo.name}}
+                        </div>
+                        <div class="float-right" ng-hide="todo.completed">
+                            <button class="btn btn-primary" ng-click="completeTodo(todo._id)">Complete</button>
+                            <button class="btn btn-success" ng-click="editTodo(todo._id)">Edit</button>
+                            <button class="btn btn-danger" ng-click="removeTodo(todo._id)">Remove</button>
+                        </div>
+                        <div class="float-right text-right line-height-34" ng-show="todo.completed">
+                            <button class="btn btn-primary" ng-click="reopenTodo(todo._id)">Re-Open</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

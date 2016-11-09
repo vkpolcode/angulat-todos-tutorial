@@ -1,0 +1,34 @@
+<div class="jumbotron text-center">
+    <h1>Users</h1>
+    <table class="table table-responsive table-striped" width="100%">
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>E-mail</th>
+                <th>Role</th>
+                <th>Last Logged</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users">
+            <td class="text-left">{{user._id}}</td>
+            <td class="text-left">{{user.email}}</td>
+            <td class="text-left">{{user.userRole}}</td>
+            <td class="text-left">{{user.lastLogin}}</td>
+            <td class="text-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-not-btn dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-cog"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="cursor-pointer" ng-click="editModalOpen(user._id)" title="Edit">Edit</a></li>
+                        <li><a class="cursor-pointer" ng-click="remove(user._id)" title="Remove">Remove</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

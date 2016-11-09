@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todosApp">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <title ng-bind="title"></title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css"/>
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.min.css"/>
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/ngSweetAlert/SweetAlert.min.js"></script>
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+
+    <script src="js/core.js"></script>
+    <script src="js/services.min.js"></script>
+    <script src="js/controllers.min.js"></script>
+</head>
+<body ng-controller="MainController">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Todos</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                    <li ng-show="checkIfVisible('users')"><a href="/users"><i class="fa fa-users"></i> Users</a></li>
+                    <li ng-show="checkIfVisible('todos')"><a href="/todos"><i class="fa fa-list"></i> Todos</a></li>
+                    <li ng-show="checkIfVisible('about')"><a href="/about"><i class="fa fa-shield"></i> About</a></li>
+                    <li ng-show="checkIfVisible('registration')"><a href="/registration"><i class="fa fa-comment"></i> Registration</a></li>
+                    <li ng-show="checkIfVisible('login')"><a href="/login"><i class="fa fa-comment"></i> Login</a></li>
+                    <li ng-show="checkIfVisible('logout')"><a ng-click="logout()" class="cursor-pointer"><i class="fa fa-sign-out"></i> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container" ng-view></div>
+    <div class="modal-parent"></div>
+</body>
+</html>
